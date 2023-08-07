@@ -19,8 +19,10 @@ app.use(express.static("controllers/"));
 app.use(express.urlencoded({ extended: false }));
 
 const movieRouter = require("./routes/movie");
-
 app.use(movieRouter);
+
+//const userRouter = require("./routes/user")
+//app.use(userRouter);
 
 mongoose
   .connect(process.env.DATABASE_URI)

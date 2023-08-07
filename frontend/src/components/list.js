@@ -4,22 +4,12 @@ import { ListContext } from "../listContext";
 import axios from "axios";
 
 export default function List() {
-  const response = axios.get("http://localhost:3000/movies");
-  const data = JSON.stringify(response);
-
+  const context = useContext(ListContext);
   return (
-    <div>
-      <h1>SNJAKSL</h1>
-      <h1>{response.id}</h1>
+    <div id="item-list">
+      {context.list.map((item) => (
+        <ListItem movie={item} />
+      ))}
     </div>
   );
-
-  // const context = useContext(ListContext);
-  // return (
-  //   <div id="item-list">
-  //     {context.list.map((item) => (
-  //       <ListItem movie={item} />
-  //     ))}
-  //   </div>
-  // );
 }
