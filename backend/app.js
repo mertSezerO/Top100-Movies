@@ -1,5 +1,8 @@
 const express = require("express");
 const app = express();
+
+app.use(express.json());
+
 const mongoose = require("mongoose");
 require("dotenv").config();
 
@@ -19,8 +22,16 @@ const movieRouter = require("./routes/movie");
 
 app.use(movieRouter);
 
-mongoose.connect(process.env.DATABASE_URI).then(
-  app.listen(process.env.PORT, () => {
-    console.log("Listening on " + process.env.PORT);
+mongoose
+  .connect(process.env.DATABASE_URI)
+  .then(() => {
+    console.log("CONNECTED TO MONGODB");
   })
-);
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      console.log("Listening on " + process.env.PORT);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
