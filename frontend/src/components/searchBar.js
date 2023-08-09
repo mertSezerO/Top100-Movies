@@ -22,7 +22,7 @@ export default function SearchBar() {
   function filterMovies(e) {
     const searchTerm = e.target.value.toLowerCase();
     const filteredMovies = context.movies
-      .filter((movie) =>
+      ?.filter((movie) =>
         movie.original_title.toLowerCase().includes(searchTerm)
       )
       .slice(0, 10);

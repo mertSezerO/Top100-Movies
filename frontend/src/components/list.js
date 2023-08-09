@@ -7,7 +7,7 @@ export default function List() {
   return (
     <div id="item-list">
       {context.list.map((item) => (
-        <ListItem movie={item} key={item.id} />
+        <ListItem movie={item} key={item._id} />
       ))}
     </div>
   );
