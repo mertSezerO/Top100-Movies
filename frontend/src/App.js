@@ -1,13 +1,13 @@
 import "./App.css";
 import List from "./components/list";
-import SearchBar from "./components/searchBar";
+import Search from "./components/search";
 import ListProvider from "./listContext";
 
 export default function App() {
   return (
     <ListProvider>
       <div id="app">
-        <SearchBar />
+        <Search />
         <List />
       </div>
     </ListProvider>

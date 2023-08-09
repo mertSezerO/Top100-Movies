@@ -3,38 +3,35 @@ import { ListContext } from "../listContext";
 
 export default function SearchBar() {
   const context = useContext(ListContext);
-  let fetchedMovies;
-
   function fetchMovies() {
     if (!context.movies) {
       fetch("http://localhost:3000/movies", {
         headers: {
           "Content-Type": "application/json",
         },
-      })
-        .then((movies) => {
-          fetchedMovies = movies.json();
-        })
-        .then(() => {
-          context.setMovies(fetchedMovies);
+      }).then((movies) => {
+        movies.json().then(({ movies }) => {
+          context.setMovies(movies);
         });
+      });
     }
   }
 
-  function filterMovies() {
-    const filteredMovies = context.movies.filter(
-      (movie) => {
-        if (
-          this.count < 10 &&
-          movie.original_title.match(context.input.toLowerCase())
-        ) {
-          this.count++;
-          return true;
-        }
-        return false;
-      },
-      { count: 0 }
-    );
+  function filterMovies(e) {
+    let count = 0;
+    const filteredMovies = context.movies?.filter((movie) => {
+      if (
+        count < 10 &&
+        movie.original_title.match(e.target.value?.toLowerCase())
+      ) {
+        count++;
+        return true;
+      }
+      return false;
+    });
+    console.log(e.target.value);
+    console.log(filteredMovies);
+    context.setInput(e.target.value);
     context.setFilteredMovies(filteredMovies);
   }
 
@@ -44,10 +41,9 @@ export default function SearchBar() {
         type="text"
         placeholder="Search the movie you want to add"
         onFocus={fetchMovies}
-        // value={context.input}
-        // onChange={filterMovies}
+        value={context.input}
+        onChange={filterMovies}
       />
-      <div></div>
     </div>
   );
 }
