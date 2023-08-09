@@ -6,6 +6,7 @@ export default function List() {
   const context = useContext(ListContext);
   return (
     <div id="item-list">
+      <h2>My Top100 Movies</h2>
       {context.list.map((item) => (
         <ListItem movie={item} key={item._id} />
       ))}

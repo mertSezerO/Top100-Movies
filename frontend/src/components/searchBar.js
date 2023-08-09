@@ -4,7 +4,7 @@ import { ListContext } from "../listContext";
 export default function SearchBar() {
   const context = useContext(ListContext);
 
-  //Cache usage will be investigated.
+  //Delay issue will be handled.
   function fetchMovies() {
     if (!context.movies) {
       fetch("http://localhost:3000/movies", {
