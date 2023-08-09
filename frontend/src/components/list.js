@@ -1,7 +1,7 @@
 import ListItem from "./listItem";
 import { useContext } from "react";
 import { ListContext } from "../listContext";
-import axios from "axios";
+// import axios from "axios";
 
 export default function List() {
   const context = useContext(ListContext);

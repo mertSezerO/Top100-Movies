@@ -4,13 +4,19 @@ const ListContext = createContext();
 
 export default function ListProvider({ children }) {
   const [list, setList] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
+  const [movies, setMovies] = useState();
+  const [input, setInput] = useState("");
+  const [filteredMovies, setFilteredMovies] = useState();
 
   const state = {
     list,
     setList,
-    searchInput,
-    setSearchInput,
+    movies,
+    setMovies,
+    input,
+    setInput,
+    filteredMovies,
+    setFilteredMovies,
   };
 
   return <ListContext.Provider value={state}>{children}</ListContext.Provider>;
