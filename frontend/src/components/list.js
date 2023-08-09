@@ -4,6 +4,7 @@ import { ListContext } from "../listContext";
 
 export default function List() {
   const context = useContext(ListContext);
+
   return (
     <div id="item-list">
       <h2>My Top100 Movies</h2>
