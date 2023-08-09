@@ -7,6 +7,8 @@ export default function ListProvider({ children }) {
   const [movies, setMovies] = useState();
   const [input, setInput] = useState("");
   const [filteredMovies, setFilteredMovies] = useState();
+  const [details, setDetails] = useState(false);
+  const [detailMovie, setDetailMovie] = useState();
 
   const state = {
     list,
@@ -17,6 +19,10 @@ export default function ListProvider({ children }) {
     setInput,
     filteredMovies,
     setFilteredMovies,
+    details,
+    setDetails,
+    detailMovie,
+    setDetailMovie,
   };
 
   return <ListContext.Provider value={state}>{children}</ListContext.Provider>;

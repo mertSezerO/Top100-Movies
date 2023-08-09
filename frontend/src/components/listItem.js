@@ -4,7 +4,10 @@ import { ListContext } from "../listContext";
 export default function ListItem({ movie }) {
   const context = useContext(ListContext);
 
-  function showDetails() {}
+  function showDetails() {
+    context.setDetails(!context.details);
+    context.setDetailMovie(movie);
+  }
 
   function removeFromList() {
     const newList = [...context.list];
@@ -14,19 +17,6 @@ export default function ListItem({ movie }) {
   }
 
   return (
-    // <div className="item">
-    //   <section className="head">
-    //     <h3>{context.list.indexOf(movie)}</h3>
-    //     <button onClick={removeFromList}>X</button>
-    //   </section>
-    //   <div className="item-property">
-    //     <img src={movie.imageURL} alt={movie.original_title}></img>
-    //     {movie.original_title}
-    //   </div>
-    //   <section className="details">
-    //     <button onClick={showDetails}>Details</button>
-    //   </section>
-    // </div>
     <div className="item">
       <section className="item-index">
         <h3>{context.list.indexOf(movie)}</h3>

@@ -64,6 +64,7 @@
 {
   border: 1px ridge var(--color);
   height: 100%;
+  width: 40%;
 }
 
 #item-list h2
@@ -71,43 +72,6 @@
   display: flex;
   justify-content: center;
 }
-
-/* .item
-{
-  display: block;
-  border: 0.8px ridge #577C8A;
-  border-radius: 2px;
-}
-
-.head
-{
-  display: flex;
-  justify-content: space-between;
-  height: 0%;
-}
-
-.head button
-{
-  background-color: var(--color);
-  border: none;
-}
-
-.item-property
-{
-  display: flex;
-  justify-content: space-around;
-}
-
-.details
-{
-  display: flex;
-  justify-content: center;
-}
-
-.details button
-{
-  all: unset;
-} */
 
 .item
 {
