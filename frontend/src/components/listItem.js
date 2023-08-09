@@ -14,17 +14,35 @@ export default function ListItem({ movie }) {
   }
 
   return (
+    // <div className="item">
+    //   <section className="head">
+    //     <h3>{context.list.indexOf(movie)}</h3>
+    //     <button onClick={removeFromList}>X</button>
+    //   </section>
+    //   <div className="item-property">
+    //     <img src={movie.imageURL} alt={movie.original_title}></img>
+    //     {movie.original_title}
+    //   </div>
+    //   <section className="details">
+    //     <button onClick={showDetails}>Details</button>
+    //   </section>
+    // </div>
     <div className="item">
-      <section className="remove">
-        <button onClick={removeFromList}>X</button>
+      <section className="item-index">
+        <h3>{context.list.indexOf(movie)}</h3>
       </section>
       <div className="item-property">
-        <img src={movie.imageURL} alt={movie.original_title}></img>
-        {movie.original_title}
+        <div className="item-info">
+          <img src={movie.imageURL} alt={movie.original_title}></img>
+          {movie.original_title}
+        </div>
+        <section className="item-details">
+          <button onClick={showDetails}>Details</button>
+        </section>
       </div>
-      <section className="details">
-        <button onClick={showDetails}>Details</button>
-      </section>
+      <div className="item-remove">
+        <button onClick={removeFromList}>X</button>
+      </div>
     </div>
   );
 }
