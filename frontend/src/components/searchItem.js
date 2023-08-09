@@ -1,4 +1,13 @@
+import { useContext } from "react";
+import { ListContext } from "../listContext";
+
 export default function SearchItem({ movie }) {
+  const context = useContext(ListContext);
+  function addToList() {
+    const newList = [...context.list, movie];
+    context.setList(newList);
+  }
+
   return (
     <div className="filter-item">
       <img src={movie.imageURL} alt={movie.original_title}></img>

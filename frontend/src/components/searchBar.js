@@ -3,6 +3,8 @@ import { ListContext } from "../listContext";
 
 export default function SearchBar() {
   const context = useContext(ListContext);
+
+  //Cache usage will be investigated.
   function fetchMovies() {
     if (!context.movies) {
       fetch("http://localhost:3000/movies", {
@@ -18,20 +20,14 @@ export default function SearchBar() {
   }
 
   function filterMovies(e) {
-    let count = 0;
-    const filteredMovies = context.movies?.filter((movie) => {
-      if (
-        count < 10 &&
-        movie.original_title.match(e.target.value?.toLowerCase())
-      ) {
-        count++;
-        return true;
-      }
-      return false;
-    });
-    console.log(e.target.value);
-    console.log(filteredMovies);
-    context.setInput(e.target.value);
+    const searchTerm = e.target.value.toLowerCase();
+    const filteredMovies = context.movies
+      .filter((movie) =>
+        movie.original_title.toLowerCase().includes(searchTerm)
+      )
+      .slice(0, 10);
+
+    context.setInput(searchTerm);
     context.setFilteredMovies(filteredMovies);
   }
 
