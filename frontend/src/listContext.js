@@ -9,6 +9,7 @@ export default function ListProvider({ children }) {
   const [filteredMovies, setFilteredMovies] = useState();
   const [details, setDetails] = useState(false);
   const [detailMovie, setDetailMovie] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
 
   const state = {
     list,
@@ -23,6 +24,8 @@ export default function ListProvider({ children }) {
     setDetails,
     detailMovie,
     setDetailMovie,
+    currentPage,
+    setCurrentPage,
   };
 
   return <ListContext.Provider value={state}>{children}</ListContext.Provider>;

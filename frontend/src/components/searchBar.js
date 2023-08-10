@@ -7,13 +7,14 @@ export default function SearchBar() {
   //Delay issue will be handled.
   function fetchMovies() {
     if (!context.movies) {
-      fetch("http://localhost:3000/movies", {
+      fetch("http://localhost:3000/movies/?page=1", {
         headers: {
           "Content-Type": "application/json",
         },
       }).then((movies) => {
         movies.json().then(({ movies }) => {
           context.setMovies(movies);
+          context.setFilteredMovies(movies);
         });
       });
     }
