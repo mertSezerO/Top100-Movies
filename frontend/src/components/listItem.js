@@ -35,7 +35,7 @@ export default function ListItem({ movie }) {
       <div className="item-property">
         <div className="item-info">
           <img src={movie.imageURL} alt={movie.original_title}></img>
-          {movie.original_title}
+          <p>{movie.original_title}</p>
         </div>
         <section className="item-details">
           <button onClick={showDetails}>Details</button>

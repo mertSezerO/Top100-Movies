@@ -4,6 +4,32 @@
  
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-corner
+{
+  background: #20232A;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #20232A;
+  box-shadow: inset 0 0 5px #61DAFB; 
+  border-radius: 10px; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #20232A; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #577C8A; 
+}
+
 #root
 {
   height: 100%;
@@ -71,12 +97,16 @@
   border: 1px ridge var(--color);
   height: 100%;
   width: 40%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #item-list h2
 {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 12%;
 }
 
 .item
@@ -85,7 +115,8 @@
   justify-content: space-between;
   border: 0.8px ridge #577C8A;
   border-radius: 2px;
-  background-color: #523B6C;
+  background-color: #3A294F;
+  height: 15%;
 }
 
 .item-index
@@ -97,6 +128,7 @@
   background-color: var(--color);
   color: #20232A;
   width: 5%;
+  height: 50%;
 }
 
 .item-property
@@ -111,12 +143,21 @@
 {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  height: 60%;
+}
+
+.item-info p
+{
+  display: flex;
+  justify-content: center;
 }
 
 .item-details
 {
   display: flex;
   justify-content: center;
+  height: 40%;
 }
 
 .item-details button

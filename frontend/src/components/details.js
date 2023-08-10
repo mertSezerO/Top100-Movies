@@ -43,7 +43,7 @@ export default function Details() {
                   .map((country) => country.name)
                   .join(", ")}
               </p>
-              <p>Release Date: {detailMovie.release_date}</p>
+              <p>Release Date: {detailMovie.release_date.substring(0, 10)}</p>
             </div>
             <div>
               <p>Budget: {formatter.format(detailMovie.budget)}</p>
