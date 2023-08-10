@@ -5,8 +5,19 @@ export default function ListItem({ movie }) {
   const context = useContext(ListContext);
 
   function showDetails() {
-    context.setDetails(!context.details);
-    context.setDetailMovie(movie);
+    // context.setDetails(!context.details);
+    // context.setDetailMovie(movie);
+    if (!context.details) {
+      context.setDetails(true);
+      context.setDetailMovie(movie);
+    } else {
+      if (context.detailMovie !== movie) {
+        context.setDetailMovie(movie);
+      } else {
+        context.setDetails(false);
+        context.setDetailMovie(null);
+      }
+    }
   }
 
   function removeFromList() {
@@ -19,7 +30,7 @@ export default function ListItem({ movie }) {
   return (
     <div className="item">
       <section className="item-index">
-        <h3>{context.list.indexOf(movie)}</h3>
+        <h3>{context.list.indexOf(movie) + 1}</h3>
       </section>
       <div className="item-property">
         <div className="item-info">

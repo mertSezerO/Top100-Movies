@@ -1,17 +1,16 @@
 import "./App.css";
-import Details from "./components/details";
-import List from "./components/list";
-import Search from "./components/search";
 import ListProvider from "./listContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ListPage from "./pages/listPage";
 
 export default function App() {
   return (
     <ListProvider>
-      <div id="app">
-        <Search />
-        <List />
-        <Details />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ListPage />}></Route>
+        </Routes>
+      </BrowserRouter>
     </ListProvider>
   );
 }

@@ -12,6 +12,21 @@ const movieSchema = new Schema({
   keywords: {
     type: Array,
   },
+  overview: {
+    type: String,
+  },
+  production_companies: {
+    type: Array,
+  },
+  production_countries: {
+    type: Array,
+  },
+  revenue: {
+    type: Number,
+  },
+  runtime: {
+    type: Number,
+  },
   original_language: {
     type: String,
   },

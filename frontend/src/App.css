@@ -1,6 +1,7 @@
 :root
 {
   --color:#61DAFB;
+ 
 }
 
 #root
@@ -60,6 +61,11 @@
   justify-content: space-around;
 }
 
+.filter-item:hover
+{
+  background-color: #523B6C;
+}
+ 
 #item-list
 {
   border: 1px ridge var(--color);
@@ -79,6 +85,7 @@
   justify-content: space-between;
   border: 0.8px ridge #577C8A;
   border-radius: 2px;
+  background-color: #523B6C;
 }
 
 .item-index
@@ -130,6 +137,40 @@
 
 .item-remove button
 {
-  background-color: var(--color);
+  background-color: #577C8A;
   border: none;
+}
+
+#details
+{
+  width: 30%;
+}
+
+#details h1
+{
+  display: flex;
+  justify-content: center;
+}
+
+#detail-container
+{
+  padding: 5% 5%;
+}
+
+#details ul
+{
+  list-style-type: none;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+#details ul li
+{
+  display: inline-block;
+  padding: 1%;
+}
+
+#details ul li::after
+{
+  content: "  |";
 }
