@@ -7,25 +7,25 @@ export default function PageList() {
 
   return (
     <div id="divider-container">
-      <div className="divider">
+      <div className={context.currentPage === 1 ? "current" : "salt"}>
         <PageItem index={1} />
       </div>
       {context.currentPage !== 1 && (
-        <div className="divider">
+        <div className="salt">
           <PageItem index={"prev"} />
         </div>
       )}
       {context.currentPage !== 1 && context.currentPage !== 481 && (
-        <div className="divider" id="current">
+        <div className="current">
           <PageItem index={context.currentPage} />
         </div>
       )}
       {context.currentPage !== 481 && (
-        <div className="divider">
+        <div className="salt">
           <PageItem index={"next"} />
         </div>
       )}
-      <div className="divider">
+      <div className={context.currentPage === 481 ? "current" : "salt"}>
         <PageItem index={481} />
       </div>
     </div>

@@ -4,7 +4,6 @@ const ListContext = createContext();
 
 export default function ListProvider({ children }) {
   const [list, setList] = useState([]);
-  const [movies, setMovies] = useState();
   const [input, setInput] = useState("");
   const [filteredMovies, setFilteredMovies] = useState();
   const [details, setDetails] = useState(false);
@@ -14,8 +13,6 @@ export default function ListProvider({ children }) {
   const state = {
     list,
     setList,
-    movies,
-    setMovies,
     input,
     setInput,
     filteredMovies,

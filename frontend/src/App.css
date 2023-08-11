@@ -114,7 +114,7 @@
 {
   display: flex;
   justify-content: space-between;
-  border: 0.8px ridge #577C8A;
+  /* border: 0.8px ridge #577C8A; */
   border-radius: 2px;
   background-color: #3A294F;
   height: 15%;
@@ -225,17 +225,18 @@
   padding-bottom: 3%;
 }
 
-#divider-container button
+.salt button
 {
   background-color: #20232A;
   color: var(--color);
-  border-color: var(--color);
+  border: 0.8px ridge var(--color);
 }
 
-#current button
+.current button
 {
   background-color: var(--color);
   color: #20232A;
+  border: 0.8px ridge var(--color);
 }
 
 #divider-container button:hover

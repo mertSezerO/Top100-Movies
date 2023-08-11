@@ -22,7 +22,6 @@ export default function PageItem({ index }) {
         },
       }).then((movies) => {
         movies.json().then(({ movies }) => {
-          context.setMovies(movies);
           context.setFilteredMovies(movies);
         });
       });

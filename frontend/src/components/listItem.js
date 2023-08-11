@@ -5,8 +5,6 @@ export default function ListItem({ movie }) {
   const context = useContext(ListContext);
 
   function showDetails() {
-    // context.setDetails(!context.details);
-    // context.setDetailMovie(movie);
     if (!context.details) {
       context.setDetails(true);
       context.setDetailMovie(movie);

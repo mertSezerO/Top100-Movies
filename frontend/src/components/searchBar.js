@@ -4,7 +4,6 @@ import { ListContext } from "../listContext";
 export default function SearchBar() {
   const context = useContext(ListContext);
 
-  //Delay issue will be handled.
   function fetchMovies() {
     if (!context.movies) {
       fetch("http://localhost:3000/movies/?page=1", {
@@ -13,7 +12,6 @@ export default function SearchBar() {
         },
       }).then((movies) => {
         movies.json().then(({ movies }) => {
-          context.setMovies(movies);
           context.setFilteredMovies(movies);
         });
       });
