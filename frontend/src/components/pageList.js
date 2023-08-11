@@ -16,7 +16,7 @@ export default function PageList() {
         </div>
       )}
       {context.currentPage !== 1 && context.currentPage !== 481 && (
-        <div className="divider">
+        <div className="divider" id="current">
           <PageItem index={context.currentPage} />
         </div>
       )}

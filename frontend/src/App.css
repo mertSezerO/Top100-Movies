@@ -216,3 +216,30 @@
 {
   content: "  |";
 }
+
+#divider-container
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3%;
+}
+
+#divider-container button
+{
+  background-color: #20232A;
+  color: var(--color);
+  border-color: var(--color);
+}
+
+#current button
+{
+  background-color: var(--color);
+  color: #20232A;
+}
+
+#divider-container button:hover
+{
+  background-color: var(--color);
+  color: #20232A;
+}

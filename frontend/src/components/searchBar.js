@@ -22,6 +22,7 @@ export default function SearchBar() {
 
   function filterMovies(e) {
     const searchTerm = e.target.value.toLowerCase();
+    context.setInput(searchTerm);
     fetch("http://localhost:3000/movies/find/?regex=" + searchTerm, {
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +30,6 @@ export default function SearchBar() {
     }).then((movies) =>
       movies.json().then(({ movies }) => {
         context.setFilteredMovies(movies);
-        context.setInput(searchTerm);
       })
     );
   }
