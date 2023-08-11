@@ -22,14 +22,16 @@ export default function SearchBar() {
 
   function filterMovies(e) {
     const searchTerm = e.target.value.toLowerCase();
-    const filteredMovies = context.movies
-      ?.filter((movie) =>
-        movie.original_title.toLowerCase().includes(searchTerm)
-      )
-      .slice(0, 10);
-
-    context.setInput(searchTerm);
-    context.setFilteredMovies(filteredMovies);
+    fetch("http://localhost:3000/movies/find/?regex=" + searchTerm, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((movies) =>
+      movies.json().then(({ movies }) => {
+        context.setFilteredMovies(movies);
+        context.setInput(searchTerm);
+      })
+    );
   }
 
   return (
