@@ -4,6 +4,19 @@ const app = express();
 app.use(express.json());
 
 const mongoose = require("mongoose");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+
+app.use(cookieParser());
+
+app.use(
+  session({
+    secret: "mysecretkey",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }, // Bu örnekte http üzerinde çalıştığı için secure'ı false yapabilirsiniz, gerçek projelerde https kullanmanız önerilir.
+  })
+);
 require("dotenv").config();
 
 const cors = require("cors");
@@ -20,6 +33,9 @@ app.use(express.urlencoded({ extended: false }));
 
 const movieRouter = require("./routes/movie");
 app.use(movieRouter);
+
+const userRouter = require("./routes/user");
+app.use(userRouter);
 
 //const userRouter = require("./routes/user")
 //app.use(userRouter);
