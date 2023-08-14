@@ -1,6 +1,6 @@
-import Details from "../components/details";
-import List from "../components/list";
-import Search from "../components/search";
+import Details from "../components/list/details";
+import List from "../components/list/list";
+import Search from "../components/list/search";
 
 export default function ListPage() {
   return (

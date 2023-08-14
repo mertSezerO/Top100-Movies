@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ListContext } from "../listContext";
+import { ListContext } from "../../listContext";
 
 export default function SearchItem({ movie }) {
   const context = useContext(ListContext);

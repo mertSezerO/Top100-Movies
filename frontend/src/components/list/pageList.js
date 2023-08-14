@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ListContext } from "../listContext";
+import { ListContext } from "../../listContext";
 import PageItem from "./pageItem";
 
 export default function PageList() {

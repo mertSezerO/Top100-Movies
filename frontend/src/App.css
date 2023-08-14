@@ -59,6 +59,8 @@
 {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  height: 10%;
 }
 
 .filter-item:hover
@@ -101,7 +103,7 @@
 .item-index
 {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   height: max-content;
   background-color: var(--color);
@@ -151,7 +153,7 @@
 {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   width: 3%;
 }
 

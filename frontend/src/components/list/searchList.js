@@ -1,4 +1,4 @@
-import { ListContext } from "../listContext";
+import { ListContext } from "../../listContext";
 import SearchItem from "./searchItem";
 
 import { useContext } from "react";

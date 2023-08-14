@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ListContext } from "../listContext";
+import { ListContext } from "../../listContext";
 
 export default function Details() {
   const context = useContext(ListContext);

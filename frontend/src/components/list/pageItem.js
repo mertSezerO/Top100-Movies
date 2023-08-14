@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ListContext } from "../listContext";
+import { ListContext } from "../../listContext";
 
 export default function PageItem({ index }) {
   const context = useContext(ListContext);
@@ -8,7 +8,6 @@ export default function PageItem({ index }) {
     if (context.currentPage === index) return;
     else {
       let nextIndex;
-      console.log(typeof index);
       if (typeof index == "string") {
         nextIndex = index === "prev" ? -1 : 1;
         nextIndex = context.currentPage + nextIndex;
