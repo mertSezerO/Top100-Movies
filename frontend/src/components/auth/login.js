@@ -23,7 +23,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="input-form">
       <label htmlFor="email">Email</label>
       <input
         type="email"

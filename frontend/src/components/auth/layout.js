@@ -6,10 +6,23 @@ export default function Layout() {
       <nav>
         <ul>
           <li>
-            <Link to={"/"}>Login</Link>
+            <Link
+              to={"/auth"}
+              className="link"
+              style={{ textDecoration: "none" }}
+            >
+              Login
+            </Link>
           </li>
+          |
           <li>
-            <Link to={"register"}>Register</Link>
+            <Link
+              to={"register"}
+              className="link"
+              style={{ textDecoration: "none" }}
+            >
+              Register
+            </Link>
           </li>
         </ul>
       </nav>

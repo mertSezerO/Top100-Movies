@@ -66,7 +66,7 @@ export default function Register() {
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
-      <button onClick={handleRegister}></button>
+      <button onClick={handleRegister}>Register Now</button>
     </div>
   );
 }
