@@ -44,7 +44,6 @@ exports.updateUser = (req, res, next) => {
 
 exports.createUser = (req, res, next) => {
   const password = req.body.password;
-
   const hashedPassword = bcrypt.hashSync(password, 10);
 
   const newUser = {
@@ -102,7 +101,6 @@ exports.loginUser = (req, res, next) => {
             .status(400)
             .json({ errorMessage: "Invalid email and password" });
         } else {
-          // Doğru kullanım: Önce session kaydedilir, ardından cevap döndürülür.
           req.session.save((err) => {
             if (err) {
               return res
