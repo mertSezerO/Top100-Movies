@@ -18,7 +18,6 @@ const Login = () => {
       localStorage.setItem("token", token);
       context.setUser(loggedInUser);
       context.setList(loggedInUser.movieList);
-      console.log(response.data);
       navigate("/");
     } catch (error) {
       console.error("Login error:", error);

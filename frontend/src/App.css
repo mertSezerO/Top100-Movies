@@ -106,6 +106,7 @@
   background-color: var(--color);
   color: #20232A;
   border: 0.8px ridge var(--color);
+  height: 80%;
 }
 
 .item

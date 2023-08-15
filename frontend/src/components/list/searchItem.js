@@ -5,7 +5,7 @@ export default function SearchItem({ movie }) {
   const context = useContext(ListContext);
 
   function addToList() {
-    if (!context.list.includes(movie)) {
+    if (context.list.filter((aMovie) => aMovie.id === movie.id).length === 0) {
       const newList = [...context.list, movie];
       context.setList(newList);
     }
