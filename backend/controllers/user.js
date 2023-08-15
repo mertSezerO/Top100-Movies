@@ -25,15 +25,15 @@ exports.getUser = (req, res, next) => {
     });
 };
 
-exports.updateUser = (req, res, next) => {
-  const id = req.params;
+exports.updateUser = async (req, res, next) => {
   const updatedUser = {
-    name: req.body.name,
+    _id: req.body._id,
+    username: req.body.username,
     email: req.body.email,
     password: req.body.password,
     movieList: req.body.movieList,
   };
-  User.findByIdAndUpdate(id, updatedUser)
+  User.findByIdAndUpdate(req.body._id, updatedUser)
     .then((result) => {
       return res.status(201).json({ message: "User succesfully updated" });
     })
@@ -45,7 +45,6 @@ exports.updateUser = (req, res, next) => {
 exports.createUser = (req, res, next) => {
   const password = req.body.password;
   const hashedPassword = bcrypt.hashSync(password, 10);
-
   const newUser = {
     username: req.body.username,
     email: req.body.email,
@@ -107,7 +106,7 @@ exports.loginUser = (req, res, next) => {
                 .status(500)
                 .json({ errorMessage: "Session save error" });
             }
-            return res.status(201).json({ token: token });
+            return res.status(201).json({ user: user, token: token });
           });
         }
       });

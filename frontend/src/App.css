@@ -93,6 +93,21 @@
   height: 12%;
 }
 
+#item-list section
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+}
+
+#item-list section button
+{
+  background-color: var(--color);
+  color: #20232A;
+  border: 0.8px ridge var(--color);
+}
+
 .item
 {
   display: flex;
@@ -227,38 +242,7 @@
   background-color: var(--color);
   color: #20232A;
 }
-/* 
-#auth-form
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 35%;
-  height: 100%;
-}
 
-#auth-layout ul
-{
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.link
-{
-  color: var(--color);
-}
-
-.input-form
-{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-} */
-
-/* Layout Styles */
 #auth-layout {
   font-family: Arial, sans-serif;
   width: 100%;
@@ -290,7 +274,6 @@
   text-transform: uppercase;
 }
 
-/* Login and Register Form Styles */
 .input-form {
   background-color: #20232A;
   padding: 20px;

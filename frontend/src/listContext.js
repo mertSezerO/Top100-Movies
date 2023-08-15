@@ -9,6 +9,9 @@ export default function ListProvider({ children }) {
   const [details, setDetails] = useState(false);
   const [detailMovie, setDetailMovie] = useState();
   const [currentPage, setCurrentPage] = useState(1);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState();
 
   const state = {
     list,
@@ -23,6 +26,12 @@ export default function ListProvider({ children }) {
     setDetailMovie,
     currentPage,
     setCurrentPage,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    user,
+    setUser,
   };
 
   return <ListContext.Provider value={state}>{children}</ListContext.Provider>;
