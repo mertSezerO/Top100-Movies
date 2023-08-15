@@ -26,16 +26,11 @@ exports.getUser = (req, res, next) => {
 };
 
 exports.updateUser = async (req, res, next) => {
-  const updatedUser = {
-    _id: req.body._id,
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-    movieList: req.body.movieList,
-  };
-  User.findByIdAndUpdate(req.body._id, updatedUser)
+  User.findByIdAndUpdate(req.body._id, req.body)
     .then((result) => {
-      return res.status(201).json({ message: "User succesfully updated" });
+      return res.status(201).json({
+        message: "User succesfully updated",
+      });
     })
     .catch((err) => {
       return res.status(500).json({ errorMessage: "Update failed" });

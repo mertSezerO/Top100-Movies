@@ -7,15 +7,11 @@ export default function List() {
   const context = useContext(ListContext);
 
   async function saveList() {
-    console.log(context.user);
-    const updatedUser = {
+    const updatedFields = {
       _id: context.user._id,
-      username: context.user.username,
-      email: context.user.email,
-      password: context.user.password,
       movieList: context.list,
     };
-    await axios.put("http://localhost:3000/users", updatedUser);
+    await axios.patch("http://localhost:3000/users", updatedFields);
   }
 
   return (
