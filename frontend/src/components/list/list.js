@@ -11,10 +11,10 @@ export default function List() {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + context.cookie.get("token"),
       },
       body: JSON.stringify({
         movieList: context.list,
-        token: context.cookie.get("token"),
       }),
     });
   }

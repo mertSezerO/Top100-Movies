@@ -1,7 +1,6 @@
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const jwt_decode = require("jwt-decode");
 
 exports.getUsers = (req, res, next) => {
   User.find()
@@ -28,8 +27,7 @@ exports.getUser = (req, res, next) => {
 
 exports.getUserMovieList = (req, res, next) => {
   const token = req.body.token;
-  const decodedToken = jwt_decode(token);
-  User.findById(decodedToken.id)
+  User.findById(token.id)
     .then((user) => {
       return res.status(200).json({ movieList: user.movieList });
     })
@@ -40,8 +38,7 @@ exports.getUserMovieList = (req, res, next) => {
 
 exports.updateUser = async (req, res, next) => {
   const token = req.body.token;
-  const decodedToken = jwt_decode(token);
-  User.findByIdAndUpdate(decodedToken.id, { movieList: req.body.movieList })
+  User.findByIdAndUpdate(token.id, { movieList: req.body.movieList })
     .then((result) => {
       return res.status(201).json({
         message: "User succesfully updated",
