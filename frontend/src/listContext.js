@@ -1,4 +1,6 @@
 import { createContext, useState } from "react";
+import Cookies from "universal-cookie";
+
 const ListContext = createContext();
 
 export default function ListProvider({ children }) {
@@ -10,6 +12,7 @@ export default function ListProvider({ children }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const cookie = new Cookies({ path: "/" });
 
   const state = {
     list,
@@ -28,6 +31,7 @@ export default function ListProvider({ children }) {
     setEmail,
     password,
     setPassword,
+    cookie,
   };
 
   return <ListContext.Provider value={state}>{children}</ListContext.Provider>;

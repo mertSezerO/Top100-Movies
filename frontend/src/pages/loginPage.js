@@ -2,9 +2,6 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ListContext } from "../listContext";
 
-import Cookies from "universal-cookie";
-const cookie = new Cookies({ path: "/" });
-
 const Login = () => {
   const navigate = useNavigate();
   const context = useContext(ListContext);
@@ -15,6 +12,7 @@ const Login = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          //"Authorization": "Bearer " + token,
         },
         body: JSON.stringify({
           email: context.email,
@@ -25,11 +23,10 @@ const Login = () => {
       var now = new Date();
       var deadline = new Date(now);
       deadline.setMinutes(now.getMinutes() + 30);
-      cookie.set("token", responseData.token, {
+      context.cookie.set("token", responseData.token, {
         path: "/",
         expires: deadline,
       });
-
       navigate("/");
     } catch (error) {
       console.error("Login error:", error);

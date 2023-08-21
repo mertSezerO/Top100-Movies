@@ -31,7 +31,7 @@ export default function ListPage() {
         context.setList(movieList);
       });
     });
-  }, [context.list, navigate]);
+  }, [navigate]);
 
   return (
     <div id="app">

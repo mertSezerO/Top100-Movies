@@ -39,15 +39,16 @@ exports.getUserMovieList = (req, res, next) => {
 };
 
 exports.updateUser = async (req, res, next) => {
-  const token = req.cookies.token;
+  const token = req.body.token;
   const decodedToken = jwt_decode(token);
-  User.findByIdAndUpdate(decodedToken.id, req.body)
+  User.findByIdAndUpdate(decodedToken.id, { movieList: req.body.movieList })
     .then((result) => {
       return res.status(201).json({
         message: "User succesfully updated",
       });
     })
     .catch((err) => {
+      console.log(err);
       return res.status(500).json({ errorMessage: "Update failed" });
     });
 };
