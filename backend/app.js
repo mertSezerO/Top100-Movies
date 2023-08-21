@@ -6,7 +6,13 @@ app.use(express.json());
 const mongoose = require("mongoose");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
-
+const cors = require("cors");
+app.use(
+  cors({
+    origin: "http://localhost:3001",
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 
 app.use(
@@ -14,19 +20,14 @@ app.use(
     secret: "mysecretkey",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }, // Bu örnekte http üzerinde çalıştığı için secure'ı false yapabilirsiniz, gerçek projelerde https kullanmanız önerilir.
+    cookie: {
+      httpOnly: true,
+      secure: true,
+      domain: "http://localhost:3001",
+    },
   })
 );
 require("dotenv").config();
-
-const cors = require("cors");
-app.use(
-  cors({
-    origin: "http://localhost:3001",
-    methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
-    credentials: true,
-  })
-);
 
 app.use(express.static("controllers/"));
 app.use(express.urlencoded({ extended: false }));
@@ -36,9 +37,6 @@ app.use(movieRouter);
 
 const userRouter = require("./routes/user");
 app.use(userRouter);
-
-//const userRouter = require("./routes/user")
-//app.use(userRouter);
 
 mongoose
   .connect(process.env.DATABASE_URI)

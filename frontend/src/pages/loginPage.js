@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ListContext } from "../../listContext";
+import { ListContext } from "../listContext";
+
+import Cookies from "universal-cookie";
+const cookie = new Cookies({ path: "/" });
 
 const Login = () => {
   const navigate = useNavigate();
@@ -9,15 +11,25 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/login", {
-        email: context.email,
-        password: context.password,
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: context.email,
+          password: context.password,
+        }),
       });
-      const token = response.data.token;
-      const loggedInUser = response.data.user;
-      localStorage.setItem("token", token);
-      context.setUser(loggedInUser);
-      context.setList(loggedInUser.movieList);
+      const responseData = await response.json();
+      var now = new Date();
+      var deadline = new Date(now);
+      deadline.setMinutes(now.getMinutes() + 30);
+      cookie.set("token", responseData.token, {
+        path: "/",
+        expires: deadline,
+      });
+
       navigate("/");
     } catch (error) {
       console.error("Login error:", error);

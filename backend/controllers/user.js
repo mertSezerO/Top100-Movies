@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const jwt_decode = require("jwt-decode");
 
 exports.getUsers = (req, res, next) => {
   User.find()
@@ -25,8 +26,22 @@ exports.getUser = (req, res, next) => {
     });
 };
 
+exports.getUserMovieList = (req, res, next) => {
+  const token = req.body.token;
+  const decodedToken = jwt_decode(token);
+  User.findById(decodedToken.id)
+    .then((user) => {
+      return res.status(200).json({ movieList: user.movieList });
+    })
+    .catch((err) => {
+      return res.status(400).json({ errorMessage: "User doesn't exist" });
+    });
+};
+
 exports.updateUser = async (req, res, next) => {
-  User.findByIdAndUpdate(req.body._id, req.body)
+  const token = req.cookies.token;
+  const decodedToken = jwt_decode(token);
+  User.findByIdAndUpdate(decodedToken.id, req.body)
     .then((result) => {
       return res.status(201).json({
         message: "User succesfully updated",
@@ -66,21 +81,16 @@ exports.deleteUser = (req, res, next) => {
     });
 };
 
-createToken = (req) => {
+createToken = (user) => {
   const jwtSecret = process.env.SECRET;
   const jwtData = {
-    email: req.body.email,
-    username: req.body.username,
+    email: user.email,
+    id: user._id,
   };
   return jwt.sign(jwtData, jwtSecret, { expiresIn: "30m" });
 };
 
 exports.loginUser = (req, res, next) => {
-  const token = createToken(req);
-  if (!token) {
-    return res.status(500).json({ errorMessage: "Internal server error" });
-  }
-
   User.findOne({ email: req.body.email })
     .then((user) => {
       bcrypt.compare(req.body.password, user.password, (err, result) => {
@@ -101,7 +111,16 @@ exports.loginUser = (req, res, next) => {
                 .status(500)
                 .json({ errorMessage: "Session save error" });
             }
-            return res.status(201).json({ user: user, token: token });
+            const token = createToken(user);
+            if (!token) {
+              return res
+                .status(500)
+                .json({ errorMessage: "Internal server error" });
+            }
+            return res.status(200).json({
+              token: token,
+              movieList: user.movieList,
+            });
           });
         }
       });

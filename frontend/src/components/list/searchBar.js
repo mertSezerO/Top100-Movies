@@ -10,6 +10,7 @@ export default function SearchBar() {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
       }).then((movies) => {
         movies.json().then(({ movies }) => {
           context.setFilteredMovies(movies);

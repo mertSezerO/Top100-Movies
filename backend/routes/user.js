@@ -10,4 +10,6 @@ Router.post("/users", userController.createUser);
 
 Router.patch("/users", userController.updateUser);
 
+Router.post("/users/list", userController.getUserMovieList);
+
 module.exports = Router;

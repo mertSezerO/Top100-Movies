@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-
 const ListContext = createContext();
 
 export default function ListProvider({ children }) {
@@ -11,7 +10,6 @@ export default function ListProvider({ children }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState();
 
   const state = {
     list,
@@ -30,8 +28,6 @@ export default function ListProvider({ children }) {
     setEmail,
     password,
     setPassword,
-    user,
-    setUser,
   };
 
   return <ListContext.Provider value={state}>{children}</ListContext.Provider>;

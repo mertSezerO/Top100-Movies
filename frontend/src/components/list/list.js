@@ -7,11 +7,16 @@ export default function List() {
   const context = useContext(ListContext);
 
   async function saveList() {
-    const updatedFields = {
-      _id: context.user._id,
-      movieList: context.list,
-    };
-    await axios.patch("http://localhost:3000/users", updatedFields);
+    await fetch("http://localhost:3000/users", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        movieList: context.movieList,
+      }),
+      credentials: "include",
+    });
   }
 
   return (
