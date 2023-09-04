@@ -101,22 +101,18 @@ exports.loginUser = (req, res, next) => {
             .status(400)
             .json({ errorMessage: "Invalid email and password" });
         } else {
-          req.session.save((err) => {
-            if (err) {
-              return res
-                .status(500)
-                .json({ errorMessage: "Session save error" });
-            }
-            const token = createToken(user);
-            if (!token) {
-              return res
-                .status(500)
-                .json({ errorMessage: "Internal server error" });
-            }
-            return res.status(200).json({
-              token: token,
-              movieList: user.movieList,
-            });
+          if (err) {
+            return res.status(500).json({ errorMessage: "Session save error" });
+          }
+          const token = createToken(user);
+          if (!token) {
+            return res
+              .status(500)
+              .json({ errorMessage: "Internal server error" });
+          }
+          return res.status(200).json({
+            token: token,
+            movieList: user.movieList,
           });
         }
       });
