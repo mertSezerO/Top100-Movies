@@ -26,8 +26,7 @@ exports.getUser = (req, res, next) => {
 };
 
 exports.getUserMovieList = (req, res, next) => {
-  const token = req.body.token;
-  User.findById(token.id)
+  User.findById(req.token.id)
     .then((user) => {
       return res.status(200).json({ movieList: user.movieList });
     })
@@ -37,8 +36,7 @@ exports.getUserMovieList = (req, res, next) => {
 };
 
 exports.updateUser = async (req, res, next) => {
-  const token = req.body.token;
-  User.findByIdAndUpdate(token.id, { movieList: req.body.movieList })
+  User.findByIdAndUpdate(req.token.id, { movieList: req.body.movieList })
     .then((result) => {
       return res.status(201).json({
         message: "User succesfully updated",

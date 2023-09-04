@@ -21,7 +21,6 @@ export default function ListPage() {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
       },
-      //send token with header, check this at root.
     }).then((res) => {
       res.json().then((res) => {
         const movieList = res.movieList;

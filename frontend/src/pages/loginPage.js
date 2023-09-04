@@ -1,10 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ListContext } from "../listContext";
 
 const Login = () => {
   const navigate = useNavigate();
   const context = useContext(ListContext);
+
+  useEffect(() => {
+    const token = context.cookie.get("token");
+    if (token) {
+      navigate("/");
+    }
+  });
 
   const handleLogin = async () => {
     try {

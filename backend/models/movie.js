@@ -9,9 +9,6 @@ const movieSchema = new Schema({
   id: {
     type: Number,
   },
-  keywords: {
-    type: Array,
-  },
   overview: {
     type: String,
   },

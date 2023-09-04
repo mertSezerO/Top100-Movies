@@ -10,7 +10,6 @@ export default function SearchBar() {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
       }).then((movies) => {
         movies.json().then(({ movies }) => {
           context.setFilteredMovies(movies);
@@ -20,7 +19,7 @@ export default function SearchBar() {
   }
 
   function filterMovies(e) {
-    const searchTerm = e.target.value.toLowerCase();
+    const searchTerm = e.target.value;
     context.setInput(searchTerm);
     fetch("http://localhost:3000/movies/find/?regex=" + searchTerm, {
       headers: {
